@@ -1,11 +1,11 @@
 -- Load genreal config 
 require("options")
-require("keymap")
-
 
 -- Load lazy.nvim
 require("config.lazy")
 
+-- Load keymap after lazy in order to access which-key module
+require("keymap")
 
 
 

@@ -15,6 +15,12 @@ return {
                         separator = false,
                     },
                 },
+                indicator = {
+                    -- icon = '▎', -- this should be omitted if indicator style is not 'icon'
+                    style = 'none', -- 'icon' | 'underline' | 'none',
+                },
+                separator_style = "slant", -- "slant" | "slope" | "thick" | "thin"
+                show_close_icon = false,
             },
         }
     end,

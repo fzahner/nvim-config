@@ -4,7 +4,20 @@
 -- w: Window
 -- e: Explorer
 -- t: Tabs
+-- b: Buffers
 -- p: Editor settings
+
+-- Define group names
+local wk = require("which-key")
+wk.add({
+    { "<leader>g", group = "Git" },
+    { "<leader>f", group = "Find" },
+    { "<leader>w", group = "Window" },
+    { "<leader>e", group = "Explorer" },
+    -- TODO: { "<leader>t", group = "Tabs" },
+    { "<leader>p", group = "Editor settings" },
+    { "<leader>b", group = "Buffers" },
+})
 
 -----------------------------------------------
 
@@ -43,21 +56,23 @@ map("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
 map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
 map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 
--- tab navigation
-map("n", "<leader>tt", ":tabnew<CR>", { desc = "Open new tab" })
-map("n", "<leader>tx", ":tabclose<CR>", { desc = "Close tab" })
-map("n", "<Tab>", ":BufferLineCycleNext<CR>") -- Go to next tab
-map("n", "<C-Tab>", ":BufferLineCyclePrev<CR>") -- To go previous tab
+-- buffer navigation navigation
+map("n", "<leader>bb", ":enew<CR>", { desc = "Open new buffer" })
+map("n", "<leader>bx", ":bd<CR>", { desc = "Close buffer" })
+map("n", "<leader>bco", ":BufferLineCloseOthers<CR>", { desc = "Close all other buffers" })
+map("n", "<leader>bcr", ":BufferLineCloseRight<CR>", { desc = "Close all buffers to the right" })
+map("n", "<leader>bcl", ":BufferLineCloseLeft<CR>", { desc = "Close all buffers to the left" })
+map("n", "<Tab>", ":BufferLineCycleNext<CR>") -- Go to next buffer
+map("n", "<C-Tab>", ":BufferLineCyclePrev<CR>") -- To go previous buffer
 
 -- editor settings
 map("n", "<leader>pw", ":set wrap!<CR>", { desc = "Toggle line wrapping" })
-map("n", "<leader>pt", "<cmd>Themery<CR>", { desc = "Change theme" }
-)
+map("n", "<leader>pt", "<cmd>Themery<CR>", { desc = "Change theme" })
+map("n", "<leader>pn", "<cmd>set nu!<CR>", { desc = "Toggle line number" })
+map("n", "<leader>pr", "<cmd>set rnu!<CR>", { desc = "Toggle relative number" })
 
 -- Git
 map("n", "<leader>gl", "<cmd>LazyGit<cr>", { desc = "Open lazy git" }) -- also configured with plugin
-
-
 
 
 -- telescope

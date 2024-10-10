@@ -6,6 +6,7 @@ return {
           options = {
             icons_enabled = true,
             theme = 'auto', --'gruvbox_dark',
+            globalstatus = true, -- define one global line instead of for each window
         }}
     end,
 
