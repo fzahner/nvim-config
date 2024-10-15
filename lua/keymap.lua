@@ -1,11 +1,4 @@
 --------- general idea of key mapping: --------
--- g: Git
--- f: Find
--- w: Window
--- e: Explorer
--- t: Tabs
--- b: Buffers
--- p: Editor settings
 
 -- Define group names
 local wk = require("which-key")
@@ -17,6 +10,8 @@ wk.add({
     -- TODO: { "<leader>t", group = "Tabs" },
     { "<leader>p", group = "Editor settings" },
     { "<leader>b", group = "Buffers" },
+    { "<leader>x", group = "Trouble.nvim" },
+    { "<leader>c", group = "File Specific" },
 })
 
 -----------------------------------------------
@@ -58,12 +53,12 @@ map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 
 -- buffer navigation navigation
 map("n", "<leader>bb", ":enew<CR>", { desc = "Open new buffer" })
-map("n", "<leader>bx", ":bd<CR>", { desc = "Close buffer" })
+map("n", "<leader>bx", ":bp|bd #<CR>", { desc = "Close buffer", silent=true })
 map("n", "<leader>bco", ":BufferLineCloseOthers<CR>", { desc = "Close all other buffers" })
 map("n", "<leader>bcr", ":BufferLineCloseRight<CR>", { desc = "Close all buffers to the right" })
 map("n", "<leader>bcl", ":BufferLineCloseLeft<CR>", { desc = "Close all buffers to the left" })
-map("n", "<Tab>", ":BufferLineCycleNext<CR>") -- Go to next buffer
-map("n", "<C-Tab>", ":BufferLineCyclePrev<CR>") -- To go previous buffer
+map("n", "<Tab>", ":BufferLineCycleNext<CR>", { silent=true }) -- Go to next buffer
+map("n", "<C-Tab>", ":BufferLineCyclePrev<CR>", { silent = true }) -- To go previous buffer
 
 -- editor settings
 map("n", "<leader>pw", ":set wrap!<CR>", { desc = "Toggle line wrapping" })
@@ -85,3 +80,13 @@ map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find o
 map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "telescope find in current buffer" })
 map("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
 map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
+
+-- trouble
+map("n","<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics (Trouble)", })
+map("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer Diagnostics (Trouble)", })
+map("n", "<leader>xs", "<cmd>Trouble symbols toggle focus=false<cr>", { desc = "Symbols (Trouble)", })
+map("n", "<leader>xl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", { desc = "LSP Definitions / references / ... (Trouble)", })
+map("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List (Trouble)", })
+map("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List (Trouble)", })
+
+
