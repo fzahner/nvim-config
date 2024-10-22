@@ -3,23 +3,25 @@
 -- Define group names
 local wk = require("which-key")
 wk.add({
-    { "<leader>g", group = "Git" },
-    { "<leader>f", group = "Find" },
-    { "<leader>w", group = "Window" },
-    { "<leader>e", group = "Explorer" },
-    -- TODO: { "<leader>t", group = "Tabs" },
-    { "<leader>p", group = "Editor settings" },
-    { "<leader>b", group = "Buffers" },
-    { "<leader>x", group = "Trouble.nvim" },
-    { "<leader>c", group = "File Specific" },
+	{ "<leader>g", group = "Git" },
+	{ "<leader>f", group = "Find" },
+	{ "<leader>w", group = "Window" },
+	{ "<leader>e", group = "Explorer" },
+	-- TODO: { "<leader>t", group = "Tabs" },
+	{ "<leader>p", group = "Editor settings" },
+	{ "<leader>b", group = "Buffers" },
+	{ "<leader>x", group = "Trouble.nvim" },
+	{ "<leader>c", group = "File Specific" },
 })
 
 -----------------------------------------------
 
 -- set leader key to space
 vim.g.mapleader = " "
-local map = vim.keymap.set 
+local map = vim.keymap.set
 
+-- Custom Vim Commands
+map("n", "O", "i<CR><Esc>", { noremap = true, silent = true, desc = "Insert line below without entering Editor mode" })
 
 -- Comment
 map("n", "<leader>/", "gcc", { desc = "Toggle Comment", remap = true })
@@ -31,10 +33,15 @@ map("n", "<leader>ex", "<cmd>NvimTreeClose<CR>", { desc = "nvimtree close" })
 
 -- terminal
 map("t", "<Esc>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
+map("n", "<leader>wt", "<cmd>:ToggleTerm direction=horizontal<CR>", { desc = "New horizontal terminal" })
+map("n", "<leader>ws", "<cmd>:ToggleTerm direction=vertical<CR>", { desc = "New vertical terminal" })
+map("t", "<esc>", [[<C-\><C-n>]], { noremap = true, silent = true })
+map("t", "<C-h>", [[<Cmd>wincmd h<CR>]], { noremap = true, silent = true })
+map("t", "<C-j>", [[<Cmd>wincmd j<CR>]], { noremap = true, silent = true })
+map("t", "<C-k>", [[<Cmd>wincmd k<CR>]], { noremap = true, silent = true })
+map("t", "<C-l>", [[<Cmd>wincmd l<CR>]], { noremap = true, silent = true })
 
 -- windows & window navigation
-map("n", "<leader>wt", "<cmd>split | term fish<CR>", { desc = "New horizontal terminal"})
-map("n", "<leader>ws", "<cmd>vsplit | term fish<CR>", { desc = "New vertical terminal"})
 map("n", "<leader>wv", "<C-w>v", { desc = "Split window vertically" })
 map("n", "<leader>wh", "<C-w>s", { desc = "Split window horizontally" })
 map("n", "<leader>wx", ":close<CR>", { desc = "Close current splitted window" })
@@ -53,12 +60,12 @@ map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 
 -- buffer navigation navigation
 map("n", "<leader>bb", ":enew<CR>", { desc = "Open new buffer" })
-map("n", "<leader>bx", ":bp|bd #<CR>", { desc = "Close buffer", silent=true })
+map("n", "<leader>bx", ":bp|bd #<CR>", { desc = "Close buffer", silent = true })
 map("n", "<leader>bco", ":BufferLineCloseOthers<CR>", { desc = "Close all other buffers" })
 map("n", "<leader>bcr", ":BufferLineCloseRight<CR>", { desc = "Close all buffers to the right" })
 map("n", "<leader>bcl", ":BufferLineCloseLeft<CR>", { desc = "Close all buffers to the left" })
-map("n", "<Tab>", ":BufferLineCycleNext<CR>", { silent=true }) -- Go to next buffer
-map("n", "<C-Tab>", ":BufferLineCyclePrev<CR>", { silent = true }) -- To go previous buffer
+map("n", "<Tab>", ":BufferLineCycleNext<CR>", { silent = true }) -- Go to next buffer
+map("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { silent = true }) -- To go previous buffer
 
 -- editor settings
 map("n", "<leader>pw", ":set wrap!<CR>", { desc = "Toggle line wrapping" })
@@ -69,10 +76,14 @@ map("n", "<leader>pr", "<cmd>set rnu!<CR>", { desc = "Toggle relative number" })
 -- Git
 map("n", "<leader>gl", "<cmd>LazyGit<cr>", { desc = "Open lazy git" }) -- also configured with plugin
 
-
 -- telescope
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "telescope find files" })
-map("n", "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>", { desc = "telescope find all files" })
+map(
+	"n",
+	"<leader>fa",
+	"<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
+	{ desc = "telescope find all files" }
+)
 map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "telescope live grep" })
 map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "telescope find buffers" })
 map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "telescope help page" })
@@ -81,12 +92,19 @@ map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = 
 map("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
 map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
 
+-- File Specific
+map("n", "<leader>cf", "<cmd>Format<CR>", { desc = "Format file" })
+map("n", "<leader>cF", "<cmd>FormatWrite<CR>", { desc = "Format and Save file" })
+
 -- trouble
-map("n","<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics (Trouble)", })
-map("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer Diagnostics (Trouble)", })
-map("n", "<leader>xs", "<cmd>Trouble symbols toggle focus=false<cr>", { desc = "Symbols (Trouble)", })
-map("n", "<leader>xl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", { desc = "LSP Definitions / references / ... (Trouble)", })
-map("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List (Trouble)", })
-map("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List (Trouble)", })
-
-
+map("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics (Trouble)" })
+map("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer Diagnostics (Trouble)" })
+map("n", "<leader>xs", "<cmd>Trouble symbols toggle focus=false<cr>", { desc = "Symbols (Trouble)" })
+map(
+	"n",
+	"<leader>xl",
+	"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+	{ desc = "LSP Definitions / references / ... (Trouble)" }
+)
+map("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List (Trouble)" })
+map("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List (Trouble)" })

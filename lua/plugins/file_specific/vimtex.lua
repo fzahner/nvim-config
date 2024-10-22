@@ -7,6 +7,6 @@ return {
     vim.g.vimtex_view_method = "zathura"
   end,
   keys = {
-        { "<leader>cc", "<cmd>VimtexCompile<CR>", desc = "Compile and Show Document" },
+       -- { "<leader>cc", "<cmd>VimtexCompile<CR>", desc = "Compile and Show Document" },
     }  
 }
