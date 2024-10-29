@@ -28,5 +28,17 @@ return {
 				-- Add more keymaps as needed
 			end,
 		})
+
+		-- HTML-LSP
+		-- Enable snippet support in LSP
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		capabilities.textDocument.completion.completionItem.snippetSupport = true
+		lspconfig.html.setup({
+			capabilities = capabilities,
+		})
+
+        -- Javascript/Typescript
+        lspconfig.ts_ls.setup({})
+        
 	end,
 }

@@ -72,6 +72,19 @@ map("n", "<leader>pw", ":set wrap!<CR>", { desc = "Toggle line wrapping" })
 map("n", "<leader>pt", "<cmd>Themery<CR>", { desc = "Change theme" })
 map("n", "<leader>pn", "<cmd>set nu!<CR>", { desc = "Toggle line number" })
 map("n", "<leader>pr", "<cmd>set rnu!<CR>", { desc = "Toggle relative number" })
+local function toggle_shiftwidth()
+    if vim.o.shiftwidth == 4 then
+        vim.o.shiftwidth = 2
+        vim.o.smarttab = true
+        print("Switched to shiftwidth=2 with smarttab")
+    else
+        vim.o.shiftwidth = 4
+        vim.o.smarttab = true
+        print("Switched to shiftwidth=4 with smarttab")
+    end
+end
+map("n", "<leader>ps", toggle_shiftwidth, { desc = "Toggle Tabwidth" })
+
 
 -- Git
 map("n", "<leader>gl", "<cmd>LazyGit<cr>", { desc = "Open lazy git" }) -- also configured with plugin
