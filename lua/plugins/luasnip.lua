@@ -4,12 +4,22 @@ return {
 	version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
 	-- install jsregexp (optional!).
 	build = "make install_jsregexp",
-    dependencies = { "rafamadriz/friendly-snippets" },
-    config = function() 
-        local ls = require("luasnip")
+	dependencies = { "rafamadriz/friendly-snippets" },
+	config = function()
+		local ls = require("luasnip")
+        
+		vim.keymap.set({ "i"}, "<Space><Tab>", function()
+			ls.jump(1)
+		end, { silent = true })
+		vim.keymap.set({ "i"}, "<Space><S-Tab>", function()
+			ls.jump(-1)
+		end, { silent = true })
 
-
-        require("luasnip.loaders.from_vscode").lazy_load()
-    end
+		vim.keymap.set({ "i", "s" }, "<C-E>", function()
+			if ls.choice_active() then
+				ls.change_choice(1)
+			end
+		end, { silent = true })
+		require("luasnip.loaders.from_vscode").lazy_load()
+	end,
 }
-

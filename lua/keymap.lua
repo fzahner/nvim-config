@@ -21,6 +21,7 @@ vim.g.mapleader = " "
 local map = vim.keymap.set
 
 -- Custom Vim Commands
+map("n", "o", "o<Esc>", { noremap = true, silent = true, desc = "Insert line above without entering Editor mode" })
 map("n", "O", "i<CR><Esc>", { noremap = true, silent = true, desc = "Insert line below without entering Editor mode" })
 
 -- Comment
