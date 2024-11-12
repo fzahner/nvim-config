@@ -22,7 +22,7 @@ local map = vim.keymap.set
 
 -- Custom Vim Commands
 map("n", "o", "o<Esc>", { noremap = true, silent = true, desc = "Insert line above without entering Editor mode" })
-map("n", "O", "i<CR><Esc>", { noremap = true, silent = true, desc = "Insert line below without entering Editor mode" })
+map("n", "O", "0i<CR><Esc>k", { noremap = true, silent = true, desc = "Insert line below without entering Editor mode" })
 
 -- Comment
 map("n", "<leader>/", "gcc", { desc = "Toggle Comment", remap = true })

@@ -4,7 +4,7 @@ return {
 	config = function()
 		-- Utilities for creating configurations
 		local util = require("formatter.util")
-        local defaults = require("formatter.defaults")
+		local defaults = require("formatter.defaults")
 
 		-- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
 		require("formatter").setup({
@@ -51,11 +51,19 @@ return {
 					end,
 				},
 				html = util.copyf(defaults.prettier),
-                css =  util.withl(defaults.prettier, "css"),
+				css = util.withl(defaults.prettier, "css"),
 				javascript = util.copyf(defaults.prettier),
-                json = util.copyf(defaults.prettier),
-                markdown = util.copyf(defaults.prettier),
-                typescript = util.withl(defaults.prettier, "typescript"),
+				json = util.copyf(defaults.prettier),
+				markdown = util.copyf(defaults.prettier),
+				typescript = util.withl(defaults.prettier, "typescript"),
+				asm = {
+					function()
+						return {
+							exe = "asmfmt",
+							stdin = true,
+						}
+					end,
+				},
 
 				-- Use the special "*" filetype for defining formatter configurations on any filetype
 				["*"] = {

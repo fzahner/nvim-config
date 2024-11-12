@@ -11,34 +11,41 @@ return {
 	},
 
 	config = function()
-		local lspconfig = require("lspconfig")
-		-- Rust analyzer
-		lspconfig.rust_analyzer.setup({
-			settings = {
-				-- ['rust-analyzer'] = {},
-			},
+		require("mason-lspconfig").setup({
+			ensure_installed = {},
 		})
+		local lspconfig = require("lspconfig")
 
-		-- Texlab
-		lspconfig.texlab.setup({
-			on_attach = function(client, bufnr)
-				-- Optional: Configure keybindings or other settings for Texlab
-				local bufopts = { noremap = true, silent = true, buffer = bufnr }
-				vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-				-- Add more keymaps as needed
+		require("mason-lspconfig").setup_handlers({
+			-- The first entry (without a key) will be the default handler
+			-- and will be called for each installed server that doesn't have
+			-- a dedicated handler.
+			function(server_name) -- default handler (optional)
+				require("lspconfig")[server_name].setup({})
+			end,
+			-- Next, you can provide a dedicated handler for specific servers.
+
+			-- Texlab
+			["texlab"] = function()
+				lspconfig.texlab.setup({
+					on_attach = function(client, bufnr)
+						-- Optional: Configure keybindings or other settings for Texlab
+						local bufopts = { noremap = true, silent = true, buffer = bufnr }
+						vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+						-- Add more keymaps as needed
+					end,
+				})
+			end,
+
+			-- HTML
+			["html"] = function()
+				-- Enable snippet support in LSP
+				local capabilities = vim.lsp.protocol.make_client_capabilities()
+				capabilities.textDocument.completion.completionItem.snippetSupport = true
+				lspconfig.html.setup({
+					capabilities = capabilities,
+				})
 			end,
 		})
-
-		-- HTML-LSP
-		-- Enable snippet support in LSP
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities.textDocument.completion.completionItem.snippetSupport = true
-		lspconfig.html.setup({
-			capabilities = capabilities,
-		})
-
-        -- Javascript/Typescript
-        lspconfig.ts_ls.setup({})
-        
 	end,
 }
