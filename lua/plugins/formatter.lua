@@ -1,17 +1,25 @@
 -- Default configs at https://github.com/mhartington/formatter.nvim/tree/master/lua/formatter/defaults
 return {
 	"mhartington/formatter.nvim",
+	"WhoIsSethDaniel/mason-tool-installer.nvim", -- as there is no mason-formatter bridge
+	dependencies = {
+		"williamboman/mason.nvim",
+	},
 	config = function()
+		-- Install Formatters
+		require("mason-tool-installer").setup({
+			ensure_installed = { "asmfmt", "latexindent", "prettier", "shfmt", "stylua" },
+		})
+
 		-- Utilities for creating configurations
 		local util = require("formatter.util")
 		local defaults = require("formatter.defaults")
 
 		-- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
 		require("formatter").setup({
-			-- Enable or disable logging
 			logging = true,
-			-- Set the log level
 			log_level = vim.log.levels.WARN,
+
 			-- All formatter configurations are opt-in
 			filetype = {
 				-- Formatter configurations for filetype "lua" go here and will be executed in order
@@ -70,6 +78,14 @@ return {
 					require("formatter.filetypes.any").remove_trailing_whitespace,
 				},
 			},
+		})
+		-- Setup format on save
+		local augroup = vim.api.nvim_create_augroup
+		local autocmd = vim.api.nvim_create_autocmd
+		augroup("__formatter__", { clear = true })
+		autocmd("BufWritePost", {
+			group = "__formatter__",
+			command = ":FormatWrite",
 		})
 	end,
 }

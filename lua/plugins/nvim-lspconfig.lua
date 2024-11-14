@@ -1,18 +1,17 @@
 return {
 	"neovim/nvim-lspconfig",
-	dependencies = {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = {
 		-- Automatically install LSPs to stdpath for neovim
 		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
-
 		-- Useful status updates for LSP
 		-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-		{ "j-hui/fidget.nvim", opts = {} },
+		{ "j-hui/fidget.nvim", opts = { } },
 	},
 
 	config = function()
 		require("mason-lspconfig").setup({
-			ensure_installed = {},
+			ensure_installed = { 'clangd', 'html-lsp', 'rust-analyzer', 'texlab',' typescript-language-server' }, -- all LSPs
 		})
 		local lspconfig = require("lspconfig")
 
