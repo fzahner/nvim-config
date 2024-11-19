@@ -67,7 +67,9 @@ return {
 
 					-- Use the special "*" filetype for defining formatter configurations on any filetype
 					["*"] = {
-						require("formatter.filetypes.any").remove_trailing_whitespace,
+						function()
+							print("No Formatter defined.")
+						end,
 					},
 				},
 			})
