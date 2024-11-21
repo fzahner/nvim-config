@@ -21,12 +21,6 @@ return {
 
 						-- You can also define your own configuration
 						function()
-							-- Supports conditional formatting
-							if util.get_current_buffer_file_name() == "special.lua" then
-								return nil
-							end
-
-							-- Full specification of configurations is down below and in Vim help files
 							return {
 								exe = "stylua",
 								args = {
@@ -67,9 +61,7 @@ return {
 
 					-- Use the special "*" filetype for defining formatter configurations on any filetype
 					["*"] = {
-						function()
-							print("No Formatter defined.")
-						end,
+						require("formatter.filetypes.any").remove_trailing_whitespace,
 					},
 				},
 			})

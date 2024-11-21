@@ -20,9 +20,24 @@ wk.add({
 vim.g.mapleader = " "
 local map = vim.keymap.set
 
+-- encourage hjkl keys
+local function warn_arrow_key()
+	print("Use hjkl instead!")
+end
+
+vim.keymap.set("", "<Up>", warn_arrow_key, { desc = "Discourage arrow key use" })
+vim.keymap.set("", "<Down>", warn_arrow_key, { desc = "Discourage arrow key use" })
+vim.keymap.set("", "<Left>", warn_arrow_key, { desc = "Discourage arrow key use" })
+vim.keymap.set("", "<Right>", warn_arrow_key, { desc = "Discourage arrow key use" })
+
 -- Custom Vim Commands
 map("n", "o", "o<Esc>", { noremap = true, silent = true, desc = "Insert line above without entering Editor mode" })
-map("n", "O", "0i<CR><Esc>k", { noremap = true, silent = true, desc = "Insert line below without entering Editor mode" })
+map(
+	"n",
+	"O",
+	"0i<CR><Esc>k",
+	{ noremap = true, silent = true, desc = "Insert line below without entering Editor mode" }
+)
 
 -- Comment
 map("n", "<leader>/", "gcc", { desc = "Toggle Comment", remap = true })
@@ -74,18 +89,17 @@ map("n", "<leader>pt", "<cmd>Themery<CR>", { desc = "Change theme" })
 map("n", "<leader>pn", "<cmd>set nu!<CR>", { desc = "Toggle line number" })
 map("n", "<leader>pr", "<cmd>set rnu!<CR>", { desc = "Toggle relative number" })
 local function toggle_shiftwidth()
-    if vim.o.shiftwidth == 4 then
-        vim.o.shiftwidth = 2
-        vim.o.smarttab = true
-        print("Switched to shiftwidth=2 with smarttab")
-    else
-        vim.o.shiftwidth = 4
-        vim.o.smarttab = true
-        print("Switched to shiftwidth=4 with smarttab")
-    end
+	if vim.o.shiftwidth == 4 then
+		vim.o.shiftwidth = 2
+		vim.o.smarttab = true
+		print("Switched to shiftwidth=2 with smarttab")
+	else
+		vim.o.shiftwidth = 4
+		vim.o.smarttab = true
+		print("Switched to shiftwidth=4 with smarttab")
+	end
 end
 map("n", "<leader>ps", toggle_shiftwidth, { desc = "Toggle Tabwidth" })
-
 
 -- Git
 map("n", "<leader>gl", "<cmd>LazyGit<cr>", { desc = "Open lazy git" }) -- also configured with plugin
@@ -105,6 +119,7 @@ map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find o
 map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "telescope find in current buffer" })
 map("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
 map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
+map("n", "<leader>gm", "<cmd>Telescope notifications<CR>", { desc = "telescope git status" })
 
 -- File Specific
 map("n", "<leader>cf", "<cmd>Format<CR>", { desc = "Format file" })
