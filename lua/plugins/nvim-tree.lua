@@ -9,6 +9,9 @@ return {
 				side = "left",
 				relativenumber = true,
 			},
+			filters = {
+				dotfiles = false,
+			},
 		})
 	end,
 }
