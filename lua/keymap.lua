@@ -137,3 +137,4 @@ map(
 )
 map("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List (Trouble)" })
 map("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List (Trouble)" })
+map("n", "<leader>xf", "<cmd>:lua vim.lsp.buf.code_action()<cr>", { desc = "Code actions list" })

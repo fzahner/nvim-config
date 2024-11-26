@@ -22,7 +22,7 @@ return {
 		},
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "clangd", "html", "rust_analyzer", "texlab", "ts_ls", "marksman" }, -- all LSPs
+				ensure_installed = { "clangd", "html", "rust_analyzer", "texlab", "ts_ls", "marksman", "harper_ls" }, -- all LSPs
 				automatic_installation = true,
 			})
 			local lspconfig = require("lspconfig")

@@ -21,7 +21,7 @@ return {
 						-- Lsp server name .
 						function()
 							local no_msg = "󰗞" -- when no active lsp
-							local yes_msg = "  "
+							local yes_msg = " "
 							local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
 							local clients = vim.lsp.get_clients()
 							if next(clients) == nil then
@@ -30,10 +30,14 @@ return {
 							for _, client in ipairs(clients) do
 								local filetypes = client.config.filetypes
 								if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-									return yes_msg .. client.name
+									if string.len(yes_msg) >= 5 then
+										yes_msg = yes_msg .. ", " .. client.name
+									else
+										yes_msg = yes_msg .. " " .. client.name
+									end
 								end
 							end
-							return no_msg
+							return yes_msg
 						end,
 					},
 					{ -- active linters
