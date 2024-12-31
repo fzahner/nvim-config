@@ -22,7 +22,16 @@ return {
 		},
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "clangd", "html", "rust_analyzer", "texlab", "ts_ls", "marksman", "harper_ls" }, -- all LSPs
+				ensure_installed = {
+					"clangd",
+					"html",
+					"rust_analyzer",
+					"texlab",
+					"ts_ls",
+					"marksman",
+					"harper_ls",
+					"cssls",
+				}, -- all LSPs
 				automatic_installation = true,
 			})
 			local lspconfig = require("lspconfig")
@@ -54,6 +63,17 @@ return {
 					local capabilities = vim.lsp.protocol.make_client_capabilities()
 					capabilities.textDocument.completion.completionItem.snippetSupport = true
 					lspconfig.html.setup({
+						capabilities = capabilities,
+					})
+				end,
+
+				-- CSS
+				["cssls"] = function()
+					--Enable (broadcasting) snippet capability for completion
+					local capabilities = vim.lsp.protocol.make_client_capabilities()
+					capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+					require("lspconfig").cssls.setup({
 						capabilities = capabilities,
 					})
 				end,
