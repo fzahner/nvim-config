@@ -84,10 +84,14 @@ map("n", "<Tab>", ":BufferLineCycleNext<CR>", { silent = true }) -- Go to next b
 map("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { silent = true }) -- To go previous buffer
 
 -- editor settings
-map("n", "<leader>pw", ":set wrap!<CR>", { desc = "Toggle line wrapping" })
-map("n", "<leader>pt", "<cmd>Themery<CR>", { desc = "Change theme" })
-map("n", "<leader>pn", "<cmd>set nu!<CR>", { desc = "Toggle line number" })
-map("n", "<leader>pr", "<cmd>set rnu!<CR>", { desc = "Toggle relative number" })
+wk.add({
+	{ "<leader>pd", group = "Display settings" },
+})
+map("n", "<leader>pdw", ":set wrap!<CR>", { desc = "Toggle line wrapping" })
+map("n", "<leader>pdt", "<cmd>Themery<CR>", { desc = "Change theme" })
+map("n", "<leader>pdn", "<cmd>set nu!<CR>", { desc = "Toggle line number" })
+map("n", "<leader>pdr", "<cmd>set rnu!<CR>", { desc = "Toggle relative number" })
+-- TODO: move to scripts folder
 local function toggle_shiftwidth()
 	if vim.o.shiftwidth == 4 then
 		vim.o.shiftwidth = 2
@@ -100,7 +104,7 @@ local function toggle_shiftwidth()
 	end
 end
 map("n", "<leader>ps", toggle_shiftwidth, { desc = "Toggle Tabwidth" })
-
+map("n", "<leader>pr", "<cmd>ClearRegisters<CR>", { desc = "Clear Registers" })
 -- Git
 map("n", "<leader>gl", "<cmd>LazyGit<cr>", { desc = "Open lazy git" }) -- also configured with plugin
 
