@@ -31,7 +31,12 @@ vim.keymap.set("", "<Left>", warn_arrow_key, { desc = "Discourage arrow key use"
 vim.keymap.set("", "<Right>", warn_arrow_key, { desc = "Discourage arrow key use" })
 
 -- Custom Vim Commands
-map("n", "o", "o<Esc>", { noremap = true, silent = true, desc = "Insert line above without entering Editor mode" })
+map(
+	"n",
+	"o",
+	"$a<CR><Tab><BS><Esc>",
+	{ noremap = true, silent = true, desc = "Insert line above without entering Editor mode" }
+)
 map(
 	"n",
 	"O",
