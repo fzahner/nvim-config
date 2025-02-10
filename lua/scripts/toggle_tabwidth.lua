@@ -1,5 +1,5 @@
 -- Changes between 2 and 4 spaces tabwidth
-vim.api.nvim_create_user_command("ToggleTabwith", function()
+vim.api.nvim_create_user_command("ToggleTabwidth", function()
 	if vim.o.shiftwidth == 4 then
 		vim.o.shiftwidth = 2
 		vim.o.smarttab = true
