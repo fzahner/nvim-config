@@ -50,6 +50,7 @@ return {
 					json = util.copyf(defaults.prettier),
 					markdown = util.copyf(defaults.prettier),
 					typescript = util.withl(defaults.prettier, "typescript"),
+					typescriptreact = util.withl(defaults.prettier, "typescript"),
 					asm = {
 						function()
 							return {
