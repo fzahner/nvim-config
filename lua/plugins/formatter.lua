@@ -51,6 +51,14 @@ return {
 					markdown = util.copyf(defaults.prettier),
 					typescript = util.withl(defaults.prettier, "typescript"),
 					typescriptreact = util.withl(defaults.prettier, "typescript"),
+					sql = {
+						function()
+							return {
+								exe = "sql-formatter",
+								stdin = true,
+							}
+						end,
+					},
 					asm = {
 						function()
 							return {
