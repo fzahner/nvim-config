@@ -5,7 +5,7 @@ local opt = vim.opt -- for conciseness
 -- Turn on true colors
 opt.termguicolors = true
 
--- Disable the "~" character at blank lines 
+-- Disable the "~" character at blank lines
 opt.fillchars = {
 	fold = " ",
 	vert = "│",
@@ -20,7 +20,7 @@ vim.g.loaded_netrwPlugin = 1
 -- Set clipboard to system clipboard
 opt.clipboard = "unnamedplus"
 
-------------- Indentation & Line Numbers -------------------   
+------------- Indentation & Line Numbers -------------------
 -- Line Wrapping
 opt.wrap = false
 
@@ -39,8 +39,7 @@ opt.relativenumber = true
 -- Show absoulte line number on cursor line (when relative line number is on)
 opt.number = true
 
-
-------------- Search preferences -------------------   
+------------- Search preferences -------------------
 
 -- Ignores case when searching
 -- e.g. -> print(Hello) will be found when searching \hello
@@ -50,6 +49,6 @@ opt.ignorecase = true
 -- e.g. -> print(LaTex) , \LATEX (will be false)
 opt.smartcase = true
 
-
-
-
+-------------- Folding ---------------
+-- Allow function/class folding
+opt.foldmethod = syntax
