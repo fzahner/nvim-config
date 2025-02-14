@@ -7,11 +7,11 @@ return {
 	dependencies = { "rafamadriz/friendly-snippets" },
 	config = function()
 		local ls = require("luasnip")
-        
-		vim.keymap.set({ "i"}, "<A-k>", function()
+
+		vim.keymap.set({ "i" }, "<A-k>", function()
 			ls.jump(1)
 		end, { silent = true })
-		vim.keymap.set({ "i"}, "<A-j>", function()
+		vim.keymap.set({ "i" }, "<A-j>", function()
 			ls.jump(-1)
 		end, { silent = true })
 		vim.keymap.set({ "i", "s" }, "<C-E>", function()
@@ -19,6 +19,9 @@ return {
 				ls.change_choice(1)
 			end
 		end, { silent = true })
+
+		-- TODO: add custom snippets
+		-- TODO: allow html snippets in jsx/tsx files
 		require("luasnip.loaders.from_vscode").lazy_load()
 	end,
 }
