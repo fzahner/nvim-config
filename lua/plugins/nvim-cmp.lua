@@ -36,13 +36,9 @@ return {
 						if not entry then
 							cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
 						end
+						cmp.confirm()
 					else
 						fallback()
-					end
-				end, { "i", "s" }),
-				["<S-BS>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.close()
 					end
 				end, { "i", "s" }),
 			}),
