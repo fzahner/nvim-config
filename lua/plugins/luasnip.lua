@@ -20,6 +20,21 @@ return {
 			end
 		end, { silent = true })
 
+		-- .example is completed to <div class="example"></div> (for HTML, JS and related)
+		ls.add_snippets("html", {
+			ls.snippet({
+				trig = "%.([%w-]+)",
+				regTrig = true,
+				name = "div with dynamic class",
+				dscr = "Create a div with dynamic class",
+			}, {
+				ls.function_node(function(_, snip)
+					return string.format('<div class="%s">', snip.captures[1])
+				end),
+				ls.insert_node(0),
+				ls.text_node({ "</div>" }),
+			}),
+		})
 		-- TODO: add custom snippets
 		-- TODO: allow html snippets in jsx/tsx files
 		require("luasnip.loaders.from_vscode").lazy_load()

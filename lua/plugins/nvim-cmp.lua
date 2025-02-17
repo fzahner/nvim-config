@@ -28,8 +28,11 @@ return {
 				["<C-e>"] = cmp.mapping.abort(),
 				["<Tab>"] = cmp.mapping(function(fallback)
 					-- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
-					if cmp.visible() then
-						local entry = cmp.get_selected_entry()
+					-- Exception: First checks if luasnip offers a expandable (like .div auto classname, see luasnip.lua)
+					local entry = cmp.get_selected_entry()
+					if require("luasnip").expand_or_jumpable() and not entry then
+						require("luasnip").expand_or_jump()
+					elseif cmp.visible() then
 						if not entry then
 							cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
 						end
