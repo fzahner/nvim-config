@@ -20,6 +20,13 @@ return {
 			end
 		end, { silent = true })
 
+		-------------- Filetype suggestions extensions ------------------
+		--- Enable html snippets in JS
+		require("luasnip").filetype_extend("javascript", { "html" })
+		require("luasnip").filetype_extend("typescript", { "html" })
+		require("luasnip").filetype_extend("javascriptreact", { "html" })
+		require("luasnip").filetype_extend("typescriptreact", { "html" })
+
 		-------------- Custom snippets --------------
 
 		--- class/className completion (HTML, JS)
@@ -37,8 +44,9 @@ return {
 				ls.text_node({ "</div>" }),
 			}),
 		})
-		-- TODO: add custom snippets
-		-- TODO: allow html snippets in jsx/tsx files
+
+		-----------------------------------------------
+
 		require("luasnip.loaders.from_vscode").lazy_load()
 	end,
 }
