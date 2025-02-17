@@ -33,12 +33,13 @@ return {
 						if not entry then
 							cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
 						end
-					elseif require("luasnip").expand_or_jumpable() then
-						-- If no snippet is available, it will try to expand (like .class expansion, see luasnip)
-						require("luasnip").expand_or_jump()
-						cmp.confirm()
 					else
 						fallback()
+					end
+				end, { "i", "s" }),
+				["<S-BS>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.close()
 					end
 				end, { "i", "s" }),
 			}),
