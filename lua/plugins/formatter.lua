@@ -10,7 +10,7 @@ return {
 			-- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
 			require("formatter").setup({
 				logging = true,
-				log_level = vim.log.levels.WARN,
+				log_level = vim.log.levels.INFO,
 
 				-- All formatter configurations are opt-in
 				filetype = {
@@ -67,6 +67,8 @@ return {
 							}
 						end,
 					},
+					c = util.copyf(defaults.clangformat),
+					cpp = util.copyf(defaults.clangformat),
 
 					-- Use the special "*" filetype for defining formatter configurations on any filetype
 					["*"] = {
@@ -74,13 +76,23 @@ return {
 					},
 				},
 			})
+			-- Setup autoformat toggle
+			vim.g.autoformat = true
+			vim.api.nvim_create_user_command("ToggleAutoFormat", function()
+				vim.g.autoformat = not vim.g.autoformat
+				print("Autoformat " .. (vim.g.autoformat and "enabled" or "disabled"))
+			end, {})
 			-- Setup format on save
 			local augroup = vim.api.nvim_create_augroup
 			local autocmd = vim.api.nvim_create_autocmd
 			augroup("__formatter__", { clear = true })
 			autocmd("BufWritePost", {
 				group = "__formatter__",
-				command = ":FormatWrite",
+				callback = function()
+					if vim.g.autoformat then
+						vim.cmd("FormatWrite")
+					end
+				end,
 			})
 		end,
 	},
@@ -92,7 +104,7 @@ return {
 		config = function()
 			-- Install Formatters
 			require("mason-tool-installer").setup({
-				ensure_installed = { "asmfmt", "latexindent", "prettier", "shfmt", "stylua" },
+				ensure_installed = { "asmfmt", "latexindent", "prettier", "shfmt", "stylua", "clang-format" },
 				run_on_start = true,
 				start_delay = 3000,
 				debounce_hours = 1,

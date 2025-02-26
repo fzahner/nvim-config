@@ -29,7 +29,6 @@ return {
 					"texlab",
 					"ts_ls",
 					"marksman",
-					"harper_ls",
 					"cssls",
 					"sqls",
 				}, -- all LSPs
