@@ -90,9 +90,10 @@ map("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { silent = true }) -- To go prev
 
 -- editor settings
 
-map("n", "<leader>ps", "<cmd>ToggleTabwidth<CR>", { desc = "Toggle Tabwidth" })
+map("n", "<leader>pt", "<cmd>ToggleTabwidth<CR>", { desc = "Toggle Tabwidth" })
 map("n", "<leader>pr", "<cmd>ClearRegisters<CR>", { desc = "Clear Registers" })
-map("n", "<leader>pa", "<cmd>ToggleAutoFormat<CR>", { desc = "Toggle auto-formatting" })
+map("n", "<leader>pf", "<cmd>ToggleAutoFormat<CR>", { desc = "Toggle auto-formatting" })
+map("n", "<leader>ps", "<cmd>ToggleAutoSave<CR>", { desc = "Toggle autosave" })
 
 wk.add({
 	{ "<leader>pd", group = "Display settings" },
