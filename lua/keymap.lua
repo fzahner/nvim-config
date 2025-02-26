@@ -89,6 +89,11 @@ map("n", "<Tab>", ":BufferLineCycleNext<CR>", { silent = true }) -- Go to next b
 map("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { silent = true }) -- To go previous buffer
 
 -- editor settings
+
+map("n", "<leader>ps", "<cmd>ToggleTabwidth<CR>", { desc = "Toggle Tabwidth" })
+map("n", "<leader>pr", "<cmd>ClearRegisters<CR>", { desc = "Clear Registers" })
+map("n", "<leader>pa", "<cmd>ToggleAutoFormat<CR>", { desc = "Toggle auto-formatting" })
+
 wk.add({
 	{ "<leader>pd", group = "Display settings" },
 })
@@ -96,8 +101,7 @@ map("n", "<leader>pdw", ":set wrap!<CR>", { desc = "Toggle line wrapping" })
 map("n", "<leader>pdt", "<cmd>Themery<CR>", { desc = "Change theme" })
 map("n", "<leader>pdn", "<cmd>set nu!<CR>", { desc = "Toggle line number" })
 map("n", "<leader>pdr", "<cmd>set rnu!<CR>", { desc = "Toggle relative number" })
-map("n", "<leader>ps", "<cmd>ToggleTabwidth<CR>", { desc = "Toggle Tabwidth" })
-map("n", "<leader>pr", "<cmd>ClearRegisters<CR>", { desc = "Clear Registers" })
+
 -- Git
 map("n", "<leader>gl", "<cmd>LazyGit<cr>", { desc = "Open lazy git" }) -- also configured with plugin
 
