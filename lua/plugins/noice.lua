@@ -11,6 +11,16 @@ return {
 		},
 		config = function()
 			require("noice").setup({
+				routes = {
+					{ -- Show save message in mini format
+						filter = {
+							event = "msg_show",
+							kind = { "" },
+							find = "written",
+						},
+						view = "mini",
+					},
+				},
 				lsp = {
 					-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 					override = {
