@@ -31,6 +31,10 @@ return {
 					"marksman",
 					"cssls",
 					"sqls",
+
+					-- Spellchecker
+					"harper_ls",
+					"textlsp",
 				}, -- all LSPs
 				automatic_installation = true,
 			})
