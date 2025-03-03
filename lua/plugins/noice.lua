@@ -20,6 +20,22 @@ return {
 						},
 						view = "mini",
 					},
+					{ -- Show undo message in mini format
+						filter = {
+							event = "msg_show",
+							kind = { "" },
+							find = "before #",
+						},
+						view = "mini",
+					},
+					{ -- Show undo message in mini format
+						filter = {
+							event = "msg_show",
+							kind = { "" },
+							find = "after #",
+						},
+						view = "mini",
+					},
 				},
 				lsp = {
 					-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
