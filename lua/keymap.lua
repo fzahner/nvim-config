@@ -128,8 +128,9 @@ map("n", "<leader>cf", "<cmd>Format<CR>", { desc = "Format file" })
 map("n", "<leader>cF", "<cmd>FormatWrite<CR>", { desc = "Format and Save file" })
 
 -- trouble
-map("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics (Trouble)" })
-map("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer Diagnostics (Trouble)" })
+map("n", "<leader>xd", "<cmd>Trouble diagnostics focus<cr>", { desc = "Diagnostics (Trouble)" })
+map("n", "<leader>xD", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer Diagnostics (Trouble)" })
+map("n", "<leader>xx", "<cmd>Trouble diagnostics close", { desc = "Close Buffer Diagnostics" })
 map("n", "<leader>xs", "<cmd>Trouble symbols toggle focus=false<cr>", { desc = "Symbols (Trouble)" })
 map(
 	"n",
@@ -139,4 +140,4 @@ map(
 )
 map("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List (Trouble)" })
 map("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List (Trouble)" })
-map("n", "<leader>xf", "<cmd>:lua vim.lsp.buf.code_action()<cr>", { desc = "Code actions list" })
+map("n", "<leader>a", "<cmd>:lua vim.lsp.buf.code_action()<cr>", { desc = "Code actions list" })
