@@ -8,6 +8,12 @@ return {
 	config = function()
 		local ls = require("luasnip")
 
+		-- Avoids behaviour where luasnip expandOrJumps are not consumed and then jump back on next tab use
+		ls.config.set_config({
+			region_check_events = "InsertEnter",
+			delete_check_events = "InsertLeave",
+		})
+
 		vim.keymap.set({ "i" }, "<A-k>", function()
 			ls.jump(1)
 		end, { silent = true })
