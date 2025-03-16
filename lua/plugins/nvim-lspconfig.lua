@@ -30,7 +30,9 @@ return {
 					"ts_ls",
 					"marksman",
 					"cssls",
-					"sqls",
+					"pylsp",
+					"flake8", -- linter, but configured via pylsp
+					-- "sqls",
 
 					-- Spellchecker
 					"harper_ls",
@@ -47,8 +49,8 @@ return {
 				function(server_name) -- default handler
 					require("lspconfig")[server_name].setup({})
 				end,
-				-- Next, you can provide a dedicated handler for specific servers.
 
+				-- Next, you can provide a dedicated handler for specific servers.
 				-- Texlab
 				["texlab"] = function()
 					lspconfig.texlab.setup({
@@ -73,12 +75,29 @@ return {
 
 				-- CSS
 				["cssls"] = function()
-					--Enable (broadcasting) snippet capability for completion
+					-- Enable snippet support in LSP
 					local capabilities = vim.lsp.protocol.make_client_capabilities()
 					capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 					require("lspconfig").cssls.setup({
 						capabilities = capabilities,
+					})
+				end,
+
+				-- Python
+				["pylsp"] = function()
+					require("lspconfig").pylsp.setup({
+						settings = {
+							pylsp = {
+								configurationSources = { "flake8" },
+								plugins = {
+									pycodestyle = { enabled = false },
+									pyflakes = { enabled = false },
+									mccabe = { enabled = false },
+									flake8 = { enabled = true },
+								},
+							},
+						},
 					})
 				end,
 			})

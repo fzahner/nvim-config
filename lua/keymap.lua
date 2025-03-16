@@ -130,7 +130,7 @@ map("n", "<leader>cF", "<cmd>FormatWrite<CR>", { desc = "Format and Save file" }
 -- trouble
 map("n", "<leader>xd", "<cmd>Trouble diagnostics focus<cr>", { desc = "Diagnostics (Trouble)" })
 map("n", "<leader>xD", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer Diagnostics (Trouble)" })
-map("n", "<leader>xx", "<cmd>Trouble diagnostics close", { desc = "Close Buffer Diagnostics" })
+map("n", "<leader>xx", "<cmd>Trouble diagnostics close<cr>", { desc = "Close Buffer Diagnostics" })
 map("n", "<leader>xs", "<cmd>Trouble symbols toggle focus=false<cr>", { desc = "Symbols (Trouble)" })
 map(
 	"n",

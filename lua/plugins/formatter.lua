@@ -69,6 +69,15 @@ return {
 					},
 					c = util.copyf(defaults.clangformat),
 					cpp = util.copyf(defaults.clangformat),
+					python = {
+						function()
+							return {
+								exe = "autopep8",
+								args = { "-" },
+								stdin = 1,
+							}
+						end,
+					},
 
 					-- Use the special "*" filetype for defining formatter configurations on any filetype
 					["*"] = {
@@ -104,7 +113,15 @@ return {
 		config = function()
 			-- Install Formatters
 			require("mason-tool-installer").setup({
-				ensure_installed = { "asmfmt", "latexindent", "prettier", "shfmt", "stylua", "clang-format" },
+				ensure_installed = {
+					"asmfmt",
+					"latexindent",
+					"prettier",
+					"shfmt",
+					"stylua",
+					"clang-format",
+					"autopep8",
+				},
 				run_on_start = true,
 				start_delay = 3000,
 				debounce_hours = 1,
