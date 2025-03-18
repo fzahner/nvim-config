@@ -30,8 +30,7 @@ return {
 					"ts_ls",
 					"marksman",
 					"cssls",
-					"pylsp",
-					"flake8", -- linter, but configured via pylsp
+					"pylsp", -- requires flake8 linter installed
 					-- "sqls",
 
 					-- Spellchecker
