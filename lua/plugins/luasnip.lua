@@ -52,6 +52,16 @@ return {
 			}),
 		})
 
+		-- html comments
+		ls.add_snippets("html", {
+			ls.snippet("comment", {
+				ls.text_node("<!-- "),
+				ls.insert_node(1),
+				ls.text_node(" -->"),
+				ls.insert_node(0),
+			}),
+		})
+
 		-----------------------------------------------
 
 		require("luasnip.loaders.from_vscode").lazy_load()

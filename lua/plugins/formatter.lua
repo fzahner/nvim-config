@@ -51,6 +51,7 @@ return {
 					markdown = util.copyf(defaults.prettier),
 					typescript = util.withl(defaults.prettier, "typescript"),
 					typescriptreact = util.withl(defaults.prettier, "typescript"),
+					vue = util.withl(defaults.prettier, "vue"),
 					sql = {
 						function()
 							return {
