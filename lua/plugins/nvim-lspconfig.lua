@@ -99,6 +99,22 @@ return {
 						},
 					})
 				end,
+
+				["ts_ls"] = function()
+					local util = require("lspconfig.util")
+					require("lspconfig").ts_ls.setup({
+						init_options = {
+							plugins = {
+								{
+									name = "@vue/typescript-plugin",
+									location = "/usr/local/lib/node_modules/@vue/typescript-plugin", -- or use a dummy path if installed locally
+									languages = { "javascript", "typescript", "vue" },
+								},
+							},
+						},
+						filetypes = { "javascript", "typescript", "vue" },
+					})
+				end,
 			})
 		end,
 	},
