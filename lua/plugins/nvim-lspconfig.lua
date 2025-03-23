@@ -69,6 +69,7 @@ return {
 					capabilities.textDocument.completion.completionItem.snippetSupport = true
 					lspconfig.html.setup({
 						capabilities = capabilities,
+						filetypes = { "html", "vue" },
 					})
 				end,
 

@@ -32,6 +32,7 @@ return {
 		require("luasnip").filetype_extend("typescript", { "html" })
 		require("luasnip").filetype_extend("javascriptreact", { "html" })
 		require("luasnip").filetype_extend("typescriptreact", { "html" })
+		require("luasnip").filetype_extend("vue", { "html" })
 
 		-------------- Custom snippets --------------
 
