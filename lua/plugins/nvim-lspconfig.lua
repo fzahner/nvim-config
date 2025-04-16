@@ -55,8 +55,6 @@ return {
 					lspconfig.texlab.setup({
 						on_attach = function(client, bufnr)
 							-- Optional: Configure keybindings or other settings for Texlab
-							local bufopts = { noremap = true, silent = true, buffer = bufnr }
-							vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
 							-- Add more keymaps as needed
 						end,
 					})
