@@ -107,11 +107,11 @@ return {
 								{
 									name = "@vue/typescript-plugin",
 									location = "/usr/local/lib/node_modules/@vue/typescript-plugin", -- or use a dummy path if installed locally
-									languages = { "javascript", "typescript", "vue" },
+									languages = { "javascript", "typescript", "vue" , "typescriptreact"},
 								},
 							},
 						},
-						filetypes = { "javascript", "typescript", "vue" },
+						filetypes = { "javascript", "typescript", "vue", "typescriptreact"},
 					})
 				end,
 			})

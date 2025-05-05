@@ -46,14 +46,24 @@ map(
 map("n", "cr", vim.lsp.buf.rename, { noremap = true, silent = true, buffer = bufnr, desc = "Rename (LSP)" })
 
 -- LSP Go commands
-map("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true, buffer = bufnr, desc = "Go to definition" })
+map(
+	"n",
+	"gd",
+	"<cmd>Telescope lsp_definitions<cr>",
+	{ noremap = true, silent = true, buffer = bufnr, desc = "Go to definition" }
+)
 map(
 	"n",
 	"gI",
-	vim.lsp.buf.implementation,
+	"<cmd>Telescope lsp_implementations<cr>",
 	{ noremap = true, silent = true, buffer = bufnr, desc = "Go to implementation" }
 )
-map("n", "gr", vim.lsp.buf.references, { noremap = true, silent = true, buffer = bufnr, desc = "Go to references" })
+map(
+	"n",
+	"gr",
+	"<cmd>Telescope lsp_references<cr>",
+	{ noremap = true, silent = true, buffer = bufnr, desc = "Go to references" }
+)
 
 -- Comment
 map("n", "<leader>/", "gcc", { desc = "Toggle Comment", remap = true })
