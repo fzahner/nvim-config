@@ -70,6 +70,7 @@ return {
 					},
 					c = util.copyf(defaults.clangformat),
 					cpp = util.copyf(defaults.clangformat),
+					cs = util.copyf(defaults.clangformat),
 					python = {
 						function()
 							return {
