@@ -41,79 +41,43 @@ return {
 			})
 			local lspconfig = require("lspconfig")
 
-			require("mason-lspconfig").setup_handlers({
-				-- The first entry (without a key) will be the default handler
-				-- and will be called for each installed server that doesn't have
-				-- a dedicated handler.
-				function(server_name) -- default handler
-					require("lspconfig")[server_name].setup({})
-				end,
+			-------- LSP Setups ------------
+			local capabilities = vim.lsp.protocol.make_client_capabilities()
+			capabilities.textDocument.completion.completionItem.snippetSupport = true
+			vim.lsp.config("html", {
+				capabilities = capabilities,
+				filetypes = { "html", "vue" },
+			})
 
-				-- Next, you can provide a dedicated handler for specific servers.
-				-- Texlab
-				["texlab"] = function()
-					lspconfig.texlab.setup({
-						on_attach = function(client, bufnr)
-							-- Optional: Configure keybindings or other settings for Texlab
-							-- Add more keymaps as needed
-						end,
-					})
-				end,
+			vim.lsp.config("cssls", {
+				capabilities = capabilities,
+			})
 
-				-- HTML
-				["html"] = function()
-					-- Enable snippet support in LSP
-					local capabilities = vim.lsp.protocol.make_client_capabilities()
-					capabilities.textDocument.completion.completionItem.snippetSupport = true
-					lspconfig.html.setup({
-						capabilities = capabilities,
-						filetypes = { "html", "vue" },
-					})
-				end,
-
-				-- CSS
-				["cssls"] = function()
-					-- Enable snippet support in LSP
-					local capabilities = vim.lsp.protocol.make_client_capabilities()
-					capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-					require("lspconfig").cssls.setup({
-						capabilities = capabilities,
-					})
-				end,
-
-				-- Python
-				["pylsp"] = function()
-					require("lspconfig").pylsp.setup({
-						settings = {
-							pylsp = {
-								configurationSources = { "flake8" },
-								plugins = {
-									pycodestyle = { enabled = false },
-									pyflakes = { enabled = false },
-									mccabe = { enabled = false },
-									flake8 = { enabled = true },
-								},
-							},
+			vim.lsp.config("pslsp", {
+				settings = {
+					pylsp = {
+						configurationSources = { "flake8" },
+						plugins = {
+							pycodestyle = { enabled = false },
+							pyflakes = { enabled = false },
+							mccabe = { enabled = false },
+							flake8 = { enabled = true },
 						},
-					})
-				end,
+					},
+				},
+			})
 
-				["ts_ls"] = function()
-					local util = require("lspconfig.util")
-					require("lspconfig").ts_ls.setup({
-						init_options = {
-							plugins = {
-								{
-									name = "@vue/typescript-plugin",
-									location = "/usr/local/lib/node_modules/@vue/typescript-plugin", -- or use a dummy path if installed locally
-									languages = { "javascript", "typescript", "vue" , "typescriptreact"},
-								},
-							},
+			vim.lsp.config("ts_ls", {
+				init_options = {
+					plugins = {
+						{
+							name = "@vue/typescript-plugin",
+							location = "/usr/local/lib/node_modules/@vue/typescript-plugin", -- or use a dummy path if installed locally
+							languages = { "javascript", "typescript", "vue", "typescriptreact" },
 						},
-						filetypes = { "javascript", "typescript", "vue", "typescriptreact"},
-					})
-				end,
+					},
+				},
+				filetypes = { "javascript", "typescript", "vue", "typescriptreact" },
 			})
 		end,
 	},
