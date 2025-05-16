@@ -12,6 +12,7 @@ wk.add({
 	{ "<leader>b", group = "Buffers" },
 	{ "<leader>x", group = "Trouble.nvim" },
 	{ "<leader>c", group = "File Specific" },
+	{ "<leader>a", group = "Avante" },
 })
 
 -----------------------------------------------
@@ -161,4 +162,4 @@ map(
 )
 map("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List (Trouble)" })
 map("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List (Trouble)" })
-map("n", "<leader>a", "<cmd>:lua vim.lsp.buf.code_action()<cr>", { desc = "Code actions list" })
+map("n", "<leader>l", "<cmd>:lua vim.lsp.buf.code_action()<cr>", { desc = "Code actions list" })
