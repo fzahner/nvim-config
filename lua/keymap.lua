@@ -127,6 +127,7 @@ map("n", "<leader>pdr", "<cmd>set rnu!<CR>", { desc = "Toggle relative number" }
 
 -- Git
 map("n", "<leader>gl", "<cmd>LazyGit<cr>", { desc = "Open lazy git" }) -- also configured with plugin
+map("n", "<leader>gb", "<cmd>GitBlameToggle<cr>", { desc = "Toggle git blame" }) -- also configured with plugin
 
 -- telescope
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "telescope find files" })
