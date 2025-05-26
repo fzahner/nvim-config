@@ -1,7 +1,9 @@
 return {
 	"yetone/avante.nvim",
+	enabled = false,
 	event = "VeryLazy",
 	version = false, -- Never set this value to "*"! Never!
+	build = "make",
 	opts = {
 		-- add any opts here
 		-- for example
@@ -14,8 +16,13 @@ return {
 			max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
 			--reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
 		},
+		claude = {
+			endpoint = "https://api.anthropic.com",
+			model = "claude-3-5-sonnet-20241022",
+			temperature = 0,
+			max_tokens = 4096,
+		},
 	},
-	build = "make",
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
 		"stevearc/dressing.nvim",

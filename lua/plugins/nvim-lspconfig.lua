@@ -12,6 +12,9 @@ return {
 
 		config = function()
 			-- LSP Setup is handeled by mason-lspconfig handlers
+			vim.diagnostic.config({
+				virtual_text = true,
+			})
 		end,
 	},
 	{
