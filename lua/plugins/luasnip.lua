@@ -27,12 +27,13 @@ return {
 		end, { silent = true })
 
 		-------------- Filetype suggestions extensions ------------------
-		--- Enable html snippets in JS
+		--- Enable html snippets in JS & PHP
 		require("luasnip").filetype_extend("javascript", { "html" })
 		require("luasnip").filetype_extend("typescript", { "html" })
 		require("luasnip").filetype_extend("javascriptreact", { "html" })
 		require("luasnip").filetype_extend("typescriptreact", { "html" })
 		require("luasnip").filetype_extend("vue", { "html" })
+		require("luasnip").filetype_extend("php", { "html" })
 
 		-------------- Custom snippets --------------
 
