@@ -38,6 +38,38 @@ return {
 					},
 				},
 				lsp = {
+
+					hover = {
+						enabled = true,
+						silent = false,
+						view = nil, -- use default hover view
+						opts = {},
+					},
+					signature = {
+						enabled = true,
+						auto_open = {
+							enabled = true,
+							trigger = true,
+							luasnip = true,
+							throttle = 50,
+						},
+						view = nil,
+						opts = {},
+					},
+					documentation = {
+						view = "hover",
+						opts = {
+							lang = "markdown",
+							replace = true,
+							render = "plain",
+							format = { "{message}" },
+							win_options = {
+								concealcursor = "n",
+								conceallevel = 3,
+								winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
+							},
+						},
+					},
 					-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 					override = {
 						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -81,6 +113,13 @@ return {
 						win_options = {
 							winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
 						},
+					},
+					-- Nice hover window
+					hover = {
+						border = {
+							style = "rounded",
+						},
+						position = { row = 2, col = 2 },
 					},
 				},
 			})
