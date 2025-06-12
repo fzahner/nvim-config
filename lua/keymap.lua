@@ -128,7 +128,7 @@ map("n", "<leader>pdr", "<cmd>set rnu!<CR>", { desc = "Toggle relative number" }
 -- Git
 map("n", "<leader>gl", "<cmd>LazyGit<cr>", { desc = "Open lazy git" }) -- also configured with plugin
 map("n", "<leader>gb", "<cmd>GitBlameToggle<cr>", { desc = "Toggle git blame" })
-map("n", "<leader>gd", "<cmd>DiffviewOpen<cr>", { desc = "Open Diffview" })
+map("n", "<leader>gD", "<cmd>DiffviewOpen<cr>", { desc = "Open Diffview" })
 map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
 map("n", "<leader>gc", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
 
