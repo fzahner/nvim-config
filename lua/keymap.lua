@@ -45,6 +45,7 @@ map(
 	{ noremap = true, silent = true, desc = "Insert line below without entering Editor mode" }
 )
 map("n", "cr", vim.lsp.buf.rename, { noremap = true, silent = true, buffer = bufnr, desc = "Rename (LSP)" })
+map("i", "<S-Tab>", "<C-d>")
 
 -- LSP Go commands
 map(
