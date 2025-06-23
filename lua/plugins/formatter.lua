@@ -2,6 +2,7 @@
 return {
 	{
 		"mhartington/formatter.nvim",
+		event = "VeryLazy",
 		config = function()
 			-- Utilities for creating configurations
 			local util = require("formatter.util")
@@ -109,6 +110,7 @@ return {
 	},
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim", -- as there is no mason-formatter bridge
+		event = "VeryLazy",
 		dependencies = {
 			"williamboman/mason.nvim",
 		},

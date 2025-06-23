@@ -1,6 +1,7 @@
 return {
 	{
 		"mfussenegger/nvim-lint",
+		event = "VeryLazy",
 		dependencies = {
 
 			"williamboman/mason.nvim",
