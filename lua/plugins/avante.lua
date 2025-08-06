@@ -1,6 +1,5 @@
 return {
 	"yetone/avante.nvim",
-	enabled = false,
 	event = "VeryLazy",
 	version = false, -- Never set this value to "*"! Never!
 	build = "make",
@@ -21,6 +20,10 @@ return {
 			model = "claude-3-5-sonnet-20241022",
 			temperature = 0,
 			max_tokens = 4096,
+		},
+		ollama = {
+			endpoint = "http://192.168.178.15:11434",
+			model = "gemma3:4b",
 		},
 	},
 	dependencies = {
