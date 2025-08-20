@@ -8,7 +8,7 @@ wk.add({
 	{ "<leader>w", group = "Window" },
 	{ "<leader>e", group = "Explorer" },
 	-- TODO: { "<leader>t", group = "Tabs" },
-	{ "<leader>p", group = "Editor settings" },
+	{ "<leader>s", group = "Editor settings" },
 	{ "<leader>b", group = "Buffers" },
 	{ "<leader>x", group = "Trouble.nvim" },
 	{ "<leader>c", group = "File Specific" },
@@ -113,18 +113,18 @@ map("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { silent = true }) -- To go prev
 
 -- editor settings
 
-map("n", "<leader>pt", "<cmd>ToggleTabwidth<CR>", { desc = "Toggle Tabwidth" })
-map("n", "<leader>pr", "<cmd>ClearRegisters<CR>", { desc = "Clear Registers" })
-map("n", "<leader>pf", "<cmd>ToggleAutoFormat<CR>", { desc = "Toggle auto-formatting" })
-map("n", "<leader>ps", "<cmd>ToggleAutoSave<CR>", { desc = "Toggle autosave" })
+map("n", "<leader>st", "<cmd>ToggleTabwidth<CR>", { desc = "Toggle Tabwidth" })
+map("n", "<leader>sr", "<cmd>ClearRegisters<CR>", { desc = "Clear Registers" })
+map("n", "<leader>sf", "<cmd>ToggleAutoFormat<CR>", { desc = "Toggle auto-formatting" })
+map("n", "<leader>ss", "<cmd>ToggleAutoSave<CR>", { desc = "Toggle autosave" })
 
 wk.add({
-	{ "<leader>pd", group = "Display settings" },
+	{ "<leader>sd", group = "Display settings" },
 })
-map("n", "<leader>pdw", ":set wrap!<CR>", { desc = "Toggle line wrapping" })
-map("n", "<leader>pdt", "<cmd>Themery<CR>", { desc = "Change theme" })
-map("n", "<leader>pdn", "<cmd>set nu!<CR>", { desc = "Toggle line number" })
-map("n", "<leader>pdr", "<cmd>set rnu!<CR>", { desc = "Toggle relative number" })
+map("n", "<leader>sdw", ":set wrap!<CR>", { desc = "Toggle line wrapping" })
+map("n", "<leader>sdt", "<cmd>Themery<CR>", { desc = "Change theme" })
+map("n", "<leader>sdn", "<cmd>set nu!<CR>", { desc = "Toggle line number" })
+map("n", "<leader>sdr", "<cmd>set rnu!<CR>", { desc = "Toggle relative number" })
 
 -- Git
 map("n", "<leader>gl", "<cmd>LazyGit<cr>", { desc = "Open lazy git" }) -- also configured with plugin
