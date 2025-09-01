@@ -125,6 +125,7 @@ map("n", "<leader>sdw", ":set wrap!<CR>", { desc = "Toggle line wrapping" })
 map("n", "<leader>sdt", "<cmd>Themery<CR>", { desc = "Change theme" })
 map("n", "<leader>sdn", "<cmd>set nu!<CR>", { desc = "Toggle line number" })
 map("n", "<leader>sdr", "<cmd>set rnu!<CR>", { desc = "Toggle relative number" })
+map("n", "<leader>sdz", "<cmd>NoNeckPain<CR>", { desc = "Center currently focued buffer" })
 
 -- Git
 map("n", "<leader>gl", "<cmd>LazyGit<cr>", { desc = "Open lazy git" }) -- also configured with plugin
