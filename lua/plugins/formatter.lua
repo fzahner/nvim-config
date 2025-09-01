@@ -81,7 +81,14 @@ return {
 							}
 						end,
 					},
-
+					rust = {
+						function()
+							return {
+								exe = "rustfmt",
+								stdin = true,
+							}
+						end,
+					},
 					-- Use the special "*" filetype for defining formatter configurations on any filetype
 					["*"] = {
 						require("formatter.filetypes.any").remove_trailing_whitespace,
