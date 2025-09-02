@@ -12,33 +12,29 @@ return {
 		config = function()
 			require("noice").setup({
 				routes = {
-					{ -- Show save message in mini format
+					{
 						filter = {
 							event = "msg_show",
-							kind = { "" },
-							find = "written",
+							any = {
+								-- Show save message in mini format
+								find = "written",
+								-- Show undo message in mini format
+								find = "before #",
+								find = "after #",
+							},
+							view = "mini",
 						},
-						view = "mini",
 					},
-					{ -- Show undo message in mini format
+					{
 						filter = {
-							event = "msg_show",
-							kind = { "" },
-							find = "before #",
-						},
-						view = "mini",
-					},
-					{ -- Show undo message in mini format
-						filter = {
-							event = "msg_show",
-							kind = { "" },
-							find = "after #",
+							-- Show formatter errors as mini
+							event = "notify",
+							find = "Failed to run formatter",
 						},
 						view = "mini",
 					},
 				},
 				lsp = {
-
 					hover = {
 						enabled = true,
 						silent = false,
