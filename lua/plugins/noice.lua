@@ -22,8 +22,8 @@ return {
 								find = "before #",
 								find = "after #",
 							},
-							view = "mini",
 						},
+						view = "mini",
 					},
 					{
 						filter = {
