@@ -18,8 +18,24 @@ return {
 				},
 				lualine_c = {
 					{
-						-- Lsp server name .
+						-- Lsp server name
 						function()
+							-- Function to turn numbers to subscript
+							local function to_subscript(num)
+								local subscript_map = {
+									["0"] = "₀",
+									["1"] = "₁",
+									["2"] = "₂",
+									["3"] = "₃",
+									["4"] = "₄",
+									["5"] = "₅",
+									["6"] = "₆",
+									["7"] = "₇",
+									["8"] = "₈",
+									["9"] = "₉",
+								}
+								return tostring(num):gsub(".", subscript_map)
+							end
 							local no_msg = "󰗞" -- when no active lsp
 							local yes_msg = " "
 							local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
@@ -30,10 +46,11 @@ return {
 							for _, client in ipairs(clients) do
 								local filetypes = client.config.filetypes
 								if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+									local client_string = client.name .. to_subscript(client.id)
 									if string.len(yes_msg) >= 5 then
-										yes_msg = yes_msg .. ", " .. client.name
+										yes_msg = yes_msg .. ", " .. client_string
 									else
-										yes_msg = yes_msg .. " " .. client.name
+										yes_msg = yes_msg .. " " .. client_string
 									end
 								end
 							end
