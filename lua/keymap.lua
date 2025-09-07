@@ -167,4 +167,4 @@ map(
 map("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List (Trouble)" })
 map("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List (Trouble)" })
 map("n", "<leader>l", "<cmd>:lua vim.lsp.buf.code_action()<cr>", { desc = "Code actions list" })
-vim.keymap.set("n", "<leader>1", vim.diagnostic.open_float, { desc = "Show diagnostic popup" })
+map("n", "<leader>1", vim.diagnostic.open_float, { desc = "Show diagnostic popup" })

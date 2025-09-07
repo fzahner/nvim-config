@@ -85,6 +85,7 @@ return {
 						function()
 							return {
 								exe = "rustfmt",
+								args = { "--edition 2024" },
 								stdin = true,
 							}
 						end,
