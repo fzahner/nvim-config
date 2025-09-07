@@ -9,7 +9,11 @@ return {
 		triggers = {
 			{ "<auto>", mode = "nixo" },
 			-- Custom triggers for marks
-			{ "m", mode = "n" },
+			{ "m", mode = "ni" },
+			-- Custom triggers for surround
+			{ "ys", mode = "ni" },
+			{ "ds", mode = "ni" },
+			{ "cs", mode = "ni" },
 		},
 	},
 }
