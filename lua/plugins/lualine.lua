@@ -66,7 +66,14 @@ return {
 							return "󱉶 " .. table.concat(linters, ", ")
 						end,
 					},
-					"filename",
+					{
+						"buffers",
+						show_filename_only = false,
+						hide_filename_extension = false,
+						show_modified_status = false,
+						use_mode_colors = true,
+						icons_enabled = false,
+					},
 				},
 				lualine_x = {
 					{
