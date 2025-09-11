@@ -67,12 +67,16 @@ return {
 						end,
 					},
 					{
-						"buffers",
-						show_filename_only = false,
-						hide_filename_extension = false,
-						show_modified_status = false,
-						use_mode_colors = true,
-						icons_enabled = false,
+						"filename",
+						path = 1,
+						shorting_target = 50,
+						newfile_status = false,
+						symbols = {
+							modified = "", -- Text to show when the file is modified.
+							readonly = "󱗑", -- Text to show when the file is non-modifiable or readonly.
+							unnamed = "[No Name]", -- Text to show for unnamed buffers.
+							newfile = "󰎔", -- Text to show for newly created file before first write
+						},
 					},
 				},
 				lualine_x = {
